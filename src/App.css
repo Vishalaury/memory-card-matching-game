@@ -1,0 +1,206 @@
+.app {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* Header Styles */
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.difficulty-select, .btn-restart {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  background: white;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-restart {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+}
+
+.btn-restart:hover {
+  background-color: #4338ca;
+}
+
+.btn-restart.large {
+  width: 100%;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  font-size: 1.1rem;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  background: white;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+.stat-box {
+  font-weight: 600;
+  color: #64748b;
+}
+
+.stat-box span {
+  color: var(--text-color);
+  font-size: 1.2rem;
+  margin-left: 0.5rem;
+}
+
+.best-score span {
+  color: #d97706;
+}
+
+/* Board & Cards */
+.board {
+  display: grid;
+  gap: 1rem;
+  justify-items: center;
+}
+
+.card-container {
+  width: 100%;
+  aspect-ratio: 1;
+  cursor: pointer;
+  perspective: 1000px;
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+.card-front {
+  background: linear-gradient(135deg, var(--primary-color), #818cf8);
+  color: white;
+}
+
+.card-back {
+  background: var(--card-bg);
+  transform: rotateY(180deg);
+  border: 2px solid #e2e8f0;
+}
+
+.card-back.matched {
+  background: #d1fae5;
+  border-color: var(--matched-color);
+  color: var(--matched-color);
+}
+
+.question-icon {
+  font-size: 2rem;
+  opacity: 0.8;
+}
+
+.card-icon {
+  font-size: 2.5rem;
+  color: var(--text-color);
+}
+
+.card-back.matched .card-icon {
+  color: var(--matched-color);
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 3rem;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+  max-width: 90%;
+  width: 400px;
+}
+
+.modal-content h2 {
+  color: var(--matched-color);
+  margin-bottom: 1.5rem;
+}
+
+.modal-stats {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.new-best-text {
+  color: #d97706;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin: 1rem 0;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .board {
+    gap: 0.5rem;
+  }
+  .card-icon {
+    font-size: 1.8rem;
+  }
+  .stats {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
